@@ -1,0 +1,13 @@
+{
+  "name": "rental-firebase",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Generator & Truck rental app — static web app + Firestore (Spark plan).",
+  "scripts": {
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "firebase": "^10.12.0"
+  }
+}

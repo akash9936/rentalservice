@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Dashboard — Khastriya Generator Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="app">
+    <div class="logo">📋</div>
+    <h1>Khastriya Generator Booking</h1>
+    <p id="whoami">Enter password to manage bookings</p>
+  </header>
+
+  <div class="wrap">
+    <!-- Locked view -->
+    <div id="locked" class="card center">
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" />
+      <button id="unlockBtn">Unlock</button>
+      <div id="authMsg" class="msg bad hidden"></div>
+    </div>
+
+    <!-- Unlocked view -->
+    <div id="unlocked" class="hidden">
+      <div class="row" style="margin-bottom:6px">
+        <button id="tabPending" class="ghost sm">Pending</button>
+        <button id="tabUpcoming" class="ghost sm">Approved</button>
+        <button id="tabAll" class="ghost sm">All</button>
+        <button id="lockBtn" class="ghost sm">Lock</button>
+      </div>
+
+      <div id="ownerStats" class="card">
+        <strong>Today’s revenue (completed):</strong>
+        <span id="revenue">₹0</span>
+      </div>
+
+      <!-- Add a truck / generator -->
+      <details id="addVehicleBox" class="card">
+        <summary style="cursor:pointer;font-weight:700">➕ Add a truck / generator</summary>
+
+        <label for="vName">Name</label>
+        <input id="vName" type="text" placeholder="e.g. Tata 407 Truck" />
+
+        <label for="vType">Type</label>
+        <select id="vType">
+          <option value="Truck">Truck</option>
+          <option value="Generator">Generator</option>
+        </select>
+
+        <label for="vNumberPlate">Number plate (trucks only)</label>
+        <input id="vNumberPlate" type="text" placeholder="e.g. KA01AB1234" />
+
+        <label for="vCapacity">Capacity</label>
+        <input id="vCapacity" type="text" placeholder="e.g. 2 Ton / 25 kVA" />
+
+        <label for="vRate">Hourly rate (₹)</label>
+        <input id="vRate" type="number" inputmode="numeric" min="0" placeholder="e.g. 600" />
+
+        <button id="addVehicleBtn">Add vehicle</button>
+        <div id="vehicleMsg" class="msg hidden"></div>
+
+        <hr style="border:none;border-top:1px solid var(--line);margin:16px 0" />
+        <strong>Current vehicles</strong>
+        <div id="vehicleList"></div>
+      </details>
+
+      <div id="list"></div>
+      <p id="empty" class="center muted hidden">Nothing here.</p>
+    </div>
+  </div>
+
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>

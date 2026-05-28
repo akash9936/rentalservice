@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ⚠️ OPEN DATABASE — no login. The dashboard uses only a client-side
+    // password (see public/admin.js), so these rules must allow public access
+    // for the app to work. This means ANYONE with the project ID can read and
+    // edit bookings. Accepted tradeoff for a small local business; do not store
+    // anything sensitive. To lock down later, switch to Firebase Auth and
+    // restore the role-based rules.
+
+    // Vehicles: public read; public write (needed so an unauthenticated
+    // dashboard can manage them). Tighten if you add login later.
+    match /vehicles/{id} {
+      allow read, write: if true;
+    }
+
+    // Bookings: public can create only a Pending/Customer booking; public can
+    // read and update/delete (dashboard has no login to distinguish staff).
+    match /bookings/{id} {
+      allow read: if true;
+      allow create: if request.resource.data.status == "Pending";
+      allow update, delete: if true;
+    }
+
+    // Drivers: open read/write.
+    match /drivers/{id} {
+      allow read, write: if true;
+    }
+
+    // No staff collection — login was removed.
+  }
+}

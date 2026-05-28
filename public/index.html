@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Book Now — Khastriya Generator Booking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="app">
+    <div class="logo">⚡</div>
+    <h1>Khastriya Generator Booking</h1>
+    <p>Book a generator or truck — we’ll confirm shortly</p>
+  </header>
+
+  <div class="wrap">
+    <form id="bookingForm" class="card">
+      <label for="customerName">Your name</label>
+      <input id="customerName" type="text" autocomplete="name" required />
+
+      <label for="customerPhone">Phone number</label>
+      <input id="customerPhone" type="tel" inputmode="numeric"
+             autocomplete="tel" placeholder="10-digit mobile" required />
+
+      <label for="truckId">Truck</label>
+      <select id="truckId">
+        <option value="">Loading trucks…</option>
+      </select>
+
+      <label for="generatorId">Generator</label>
+      <select id="generatorId">
+        <option value="">Loading generators…</option>
+      </select>
+
+      <p class="muted">Pick a truck, a generator, or both.</p>
+
+      <div class="row">
+        <div>
+          <label for="start">Start</label>
+          <input id="start" type="datetime-local" required />
+        </div>
+        <div>
+          <label for="end">End</label>
+          <input id="end" type="datetime-local" required />
+        </div>
+      </div>
+
+      <label for="notes">Notes (optional)</label>
+      <textarea id="notes" placeholder="e.g. delivery address, special requests"></textarea>
+
+      <button id="submitBtn" type="submit">Request booking</button>
+      <div id="message" class="msg hidden"></div>
+    </form>
+
+    <p class="center muted">
+      Staff? <a href="./admin.html">Open dashboard →</a>
+    </p>
+  </div>
+
+  <script type="module" src="./customer.js"></script>
+</body>
+</html>
